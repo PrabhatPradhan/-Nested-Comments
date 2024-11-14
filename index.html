@@ -3,23 +3,27 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Nested Comments</title>
+  <title>Nested Comment</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <h2 class="heding">
-    Nested Comments</h2>
+    Nested Comments
+    </h2>
+
+  <!-- Reset Button -->
+  <button id="reset-btn" onclick="resetComments()">Reset</button>
   
   <div id="comment-section">
-   
+    <!-- Initial comment structure -->
     <div class="comment">
       <div class="comment-header">
-        <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" alt="User Image">
+        <img src="https://via.placeholder.com/30" alt="User Image">
         <span class="name">John Doe</span>
       </div>
       <p>Welcome! You can reply to the comments. But you can't delete the initial comment.</p>
       <div class="comment-actions">
-        <button class="btn" onclick="showReplyInput(1)">Reply</button>
+        <button onclick="showReplyInput(1)">Reply</button>
       </div>
       <div id="reply-1" class="reply-section" style="display: none;">
         <input type="text" id="reply-name-1" placeholder="Your name">
