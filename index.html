@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nested Comments</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <h2 class="main-heding">Nested Comments</h2>
+  <div id="comment-section">
+    <!-- Comments will be dynamically added here -->
+  </div>
+  
+  <div class="comment-input">
+    <div class="boxs">
+    <input type="text" id="user-name" placeholder="Your name">
+    <input type="text" id="new-comment" placeholder="Add a comment">
+    </div>
+    <button onclick="addComment()">Post Comment</button>
+    <button onclick="resetComments()">Reset</button>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
