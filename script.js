@@ -1,7 +1,7 @@
-// Array to hold replies (all replies will be nested under one main comment with id 1)
+
 let replies = [];
 
-// Function to render replies recursively
+
 function renderReplies(parentId, container) {
   container.innerHTML = '';
 
@@ -32,51 +32,50 @@ function renderReplies(parentId, container) {
 
       container.appendChild(replyDiv);
 
-      // Recursive call to render nested replies
+    
       renderReplies(reply.id, replyDiv.querySelector(`#replies-${reply.id}`));
     });
 }
 
-// Function to show reply input box
+
 function showReplyInput(replyId) {
   document.getElementById(`reply-${replyId}`).style.display = 'block';
 }
 
-// Function to add a reply
+
 function addReply(parentId) {
   const replyName = document.getElementById(`reply-name-${parentId}`).value;
   const replyText = document.getElementById(`reply-input-${parentId}`).value;
 
   if (replyName && replyText) {
     replies.push({
-      id: replies.length + 2, // Start from 2 to avoid conflict with initial comment id 1
+      id: replies.length + 2, 
       name: replyName,
       text: replyText,
       parentId: parentId
     });
-    document.getElementById(`reply-name-${parentId}`).value = ''; // Clear reply name input
-    document.getElementById(`reply-input-${parentId}`).value = ''; // Clear reply input
-    renderReplies(1, document.getElementById('replies-1')); // Re-render replies under the main comment
+    document.getElementById(`reply-name-${parentId}`).value = ''; 
+    document.getElementById(`reply-input-${parentId}`).value = ''; 
+    renderReplies(1, document.getElementById('replies-1')); 
   } else {
     alert("Please enter both your name and a reply.");
   }
 }
 
-// Function to edit a reply
+
 function editReply(replyId) {
   const reply = replies.find(r => r.id === replyId);
   const newText = prompt("Edit your reply:", reply.text);
-  if (newText !== null && newText.trim() !== "") { // Allow cancel but prevent empty replies
+  if (newText !== null && newText.trim() !== "") { 
     reply.text = newText;
-    renderReplies(1, document.getElementById('replies-1')); // Re-render replies
+    renderReplies(1, document.getElementById('replies-1')); 
   }
 }
 
-// Function to delete a reply and its nested replies
+
 function deleteReply(replyId) {
   replies = replies.filter(reply => reply.id !== replyId && reply.parentId !== replyId);
-  renderReplies(1, document.getElementById('replies-1')); // Re-render replies
+  renderReplies(1, document.getElementById('replies-1')); 
 }
 
-// Initial render for the main comment's replies
 renderReplies(1, document.getElementById('replies-1'));
