@@ -1,6 +1,7 @@
 
 let replies = [];
 
+
 function renderReplies(parentId, container) {
   container.innerHTML = '';
 
@@ -31,11 +32,10 @@ function renderReplies(parentId, container) {
 
       container.appendChild(replyDiv);
 
-      
+    
       renderReplies(reply.id, replyDiv.querySelector(`#replies-${reply.id}`));
     });
 }
-
 
 function showReplyInput(replyId) {
   document.getElementById(`reply-${replyId}`).style.display = 'block';
@@ -61,6 +61,7 @@ function addReply(parentId) {
   }
 }
 
+
 function editReply(replyId) {
   const reply = replies.find(r => r.id === replyId);
   const newText = prompt("Edit your reply:", reply.text);
@@ -73,18 +74,17 @@ function editReply(replyId) {
 
 function deleteReply(replyId) {
   replies = replies.filter(reply => reply.id !== replyId && reply.parentId !== replyId);
-  renderReplies(1, document.getElementById('replies-1')); 
+  renderReplies(1, document.getElementById('replies-1'));
 }
 
 
 function resetComments() {
   replies = []; 
   renderReplies(1, document.getElementById('replies-1')); 
-  
+
   document.querySelectorAll('.reply-section').forEach(replySection => {
     replySection.style.display = 'none';
   });
 }
-
 
 renderReplies(1, document.getElementById('replies-1'));
